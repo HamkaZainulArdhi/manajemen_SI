@@ -8,7 +8,7 @@ $stmt = $conn->prepare("DELETE FROM teachers WHERE id = ?");
 $stmt->bind_param("i", $id);
 
 if ($stmt->execute()) {
-    header("Location: guru.php");
+    header("Location: dosen.php");
 } else {
     echo "Gagal menghapus data.";
 }

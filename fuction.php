@@ -2,7 +2,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$dbname = "sim_db";
+$dbname = "kelasd";
 
 $conn = new mysqli($host, $user, $password, $dbname);
 

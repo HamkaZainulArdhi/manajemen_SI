@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ss", $name, $subject);
 
     if ($stmt->execute()) {
-        header("Location: guru.php");
+        header("Location: dosen.php");
     } else {
         echo "Gagal menambahkan data guru.";
     }

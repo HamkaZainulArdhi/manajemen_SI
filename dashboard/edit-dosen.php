@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssi", $name, $subject, $id);
 
     if ($stmt->execute()) {
-        header("Location: guru.php"); // Redirect ke halaman daftar siswa setelah berhasil update
+        header("Location: dosen.php"); // Redirect ke halaman daftar siswa setelah berhasil update
     } else {
         echo "Gagal mengupdate data.";
     }

@@ -17,12 +17,12 @@ $chart_data = [
     'Januari' => 50,
     'Februari' => 60,
     'Maret' => 70,
-    'April' => 80,
-    'Mei' => 90,
+    'April' => 70,
+    'Mei' => 60,
     'Juni' => 100,
     'Juli' => 110,
     'Agustus' => 120,
-    'September' => 130,
+    'September' => 100,
     'Oktober' => 140,
     'November' => 150,
     'Desember' => 160,
@@ -41,7 +41,7 @@ $chart_data = [
     <title>Dashboard</title>
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100 ">
     <div class="flex h-screen">
         <!-- Sidebar -->
         <?php include 'slidebar.php' ?>
@@ -73,7 +73,7 @@ $chart_data = [
                     class="bg-gradient-to-r from-green-500 to-green-700 text-white shadow-lg rounded p-6 flex items-center">
                     <div class="text-4xl mr-4">👨‍🏫</div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-2">Total Guru</h3>
+                        <h3 class="text-lg font-semibold mb-2">Total Dosen</h3>
                         <p class="text-3xl font-bold"><?php echo $total_teachers; ?></p>
                     </div>
                 </div>
@@ -81,7 +81,7 @@ $chart_data = [
 
             <!-- Chart -->
             <div class="bg-white shadow rounded p-6">
-                <h3 class="text-lg font-semibold mb-4 text-gray-700">Perkembangan Sekolah (1 Tahun)</h3>
+                <h3 class="text-lg font-semibold mb-4 text-gray-700">Perkembangan Mahasiswa</h3>
                 <canvas id="schoolChart"></canvas>
             </div>
         </div>

@@ -9,12 +9,12 @@ if (!isset($_SESSION['user'])) {
 }
 
 // Konfigurasi paginasi
-$rowsPerPage = 5;
+$rowsPerPage = 9;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $page = max($page, 1); // Pastikan halaman minimal 1
 $offset = ($page - 1) * $rowsPerPage;
 
-// Query data siswa dengan paginasi dan pengurutan khusus
+// Query data mahasiswaengan paginasi dan pengurutan khusus
 $totalRows = $conn->query("SELECT COUNT(*) as count FROM students")->fetch_assoc()['count'];
 $totalPages = ceil($totalRows / $rowsPerPage);
 
@@ -35,7 +35,7 @@ $students = $conn->query("
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Include SweetAlert2 -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Daftar Siswa</title>
+    <title>Daftar mahasiswa</title>
 </head>
 
 <body class="bg-gray-100">
@@ -45,30 +45,30 @@ $students = $conn->query("
 
         <!-- Main Content -->
         <div class="flex-1 p-6">
-            <h2 class="text-3xl font-bold mb-6">Daftar Siswa</h2>
+            <h2 class="text-3xl font-bold mb-6">Daftar mahasiswa</h2>
 
-            <!-- Tabel Siswa -->
+            <!-- Tabel mahasiswa-->
             <div class="overflow-x-auto">
                 <table class="table-auto w-full bg-white shadow rounded">
                     <thead>
                         <tr class="bg-blue-600 text-white">
                             <th class="p-4">ID</th>
-                            <th class="p-4">Nama Siswa</th>
+                            <th class="p-4">Nama mahasiswa</th>
                             <th class="p-4">Kelas</th>
                             <th class="p-4">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php while ($row = $students->fetch_assoc()): ?>
-                        <tr class="border-b">
+                        <tr class="border-b border-blue-200 text-center ">
                             <td class="p-4"><?php echo $row['id']; ?></td>
                             <td class="p-4"><?php echo $row['name']; ?></td>
                             <td class="p-4"><?php echo $row['class']; ?></td>
                             <td class="p-4">
                                 <a href="javascript:void(0);" onclick="confirmEdit(<?php echo $row['id']; ?>)"
-                                    class="bg-yellow-500 text-white px-4 py-2 rounded">Edit</a>
+                                    class="bg-yellow-500 text-white px-4 py-2 rounded"><i class="mr-2 fa-regular fa-pen-to-square"></i>Edit</a>
                                 <a href="javascript:void(0);" onclick="confirmDeletion(<?php echo $row['id']; ?>)"
-                                    class="bg-red-500 text-white px-4 py-2 rounded">Hapus</a>
+                                    class="bg-red-500 text-white px-4 py-2 rounded"><i class="mr-2 fa-regular fa-square-minus"></i>Hapus</a>
                             </td>
                         </tr>
                         <?php endwhile; ?>
@@ -101,14 +101,14 @@ $students = $conn->query("
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman hapus
-                window.location.href = `hapus-siswa.php?id=${id}`;
+                window.location.href = `hapus-mahasiswa.php?id=${id}`;
             }
         });
     }
 
     function confirmEdit(id) {
         Swal.fire({
-            title: 'Yakin ingin mengedit data siswa?',
+            title: 'Yakin ingin mengedit data mahasiswa?',
             text: "Pastikan data yang akan diedit sudah benar.",
             icon: 'warning',
             showCancelButton: true,
@@ -119,7 +119,7 @@ $students = $conn->query("
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman edit
-                window.location.href = `edit-siswa.php?id=${id}`;
+                window.location.href = `edit-mahasiswa.php?id=${id}`;
             }
         });
     }

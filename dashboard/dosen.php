@@ -46,7 +46,7 @@ $students = $conn->query("SELECT * FROM teachers");
                 </thead>
                 <tbody>
                     <?php while ($row = $students->fetch_assoc()): ?>
-                    <tr class="border-b">
+                    <tr class="border-b text-center">
                         <td class="p-4"><?php echo $row['id']; ?></td>
                         <td class="p-4"><?php echo $row['name']; ?></td>
                         <td class="p-4"><?php echo $row['subject']; ?></td>
@@ -77,14 +77,14 @@ $students = $conn->query("SELECT * FROM teachers");
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman hapus
-                window.location.href = `hapus-guru.php?id=${id}`;
+                window.location.href = `hapus-dosen.php?id=${id}`;
             }
         });
     }
 
     function confirmEdit(id) {
         Swal.fire({
-            title: 'Yakin ingin mengedit data guru?',
+            title: 'Yakin ingin mengedit data dosen?',
             text: "Pastikan data yang akan diedit sudah benar.",
             icon: 'warning',
             showCancelButton: true,
@@ -95,7 +95,7 @@ $students = $conn->query("SELECT * FROM teachers");
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman edit
-                window.location.href = `edit-guru.php?id=${id}`;
+                window.location.href = `edit-dosen.php?id=${id}`;
             }
         });
     }

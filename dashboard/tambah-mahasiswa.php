@@ -15,7 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $gambar = upload();
 
-
     $stmt = $conn->prepare("INSERT INTO students (name, class, nama_file) VALUES (?, ?, ?)");
     $stmt->bind_param("sss", $name, $class, $gambar);
     // Eksekusi query   
@@ -29,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function upload(){
+    $apikey = 'ohAop9qqN877WHML7v8qcisE'; // api remove bg
     $nama_file = $_FILES['gambar']['name'];
     $tmp_file = $_FILES['gambar']['tmp_name'];
 
@@ -43,8 +43,32 @@ function upload(){
         exit();
     }
 
-    move_uploaded_file($tmp_file, '../images/' . $nama_file);
-    return $nama_file;
+    // inisiasi API remove bg
+     $ch = curl_init();
+     curl_setopt($ch, CURLOPT_URL, 'https://api.remove.bg/v1.0/removebg');
+         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+             curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, [
+        'image_file' => new CURLFile($tmp_file),
+        'size' => 'auto'
+    ]);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+        'X-Api-Key: ' . $apikey
+    ]);
+        $response = curl_exec($ch);
+    if (curl_errno($ch)) {
+        echo 'Error: ' . curl_error($ch);
+    } else {
+        // Simpan hasil remove background ke file
+        $outputPath = '../images/no-bg-' . $nama_file;
+        file_put_contents($outputPath, $response);
+        echo "<script>
+            alert('API berhasil dinisiasi! GAMBAR BERHASIL DI REMOVE BACKGROUND!');
+            window.location.href = 'mahasiswa.php';
+        </script>";
+    }
+    curl_close($ch);
+    return 'no-bg-' . $nama_file;
 }
 ?>
 
@@ -88,6 +112,7 @@ function upload(){
                     <div id="previewContainer" class="mt-3">
                         <img id="previewImage" class="hidden max-w-xs rounded-lg shadow-md">
                     </div>
+                    <p class="italic text-xs">*Sudah Terkonfigurasi API Remove Background</p>
                 </div>
                 <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Simpan</button>
             </form>

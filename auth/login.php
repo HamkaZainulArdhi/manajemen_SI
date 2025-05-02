@@ -42,8 +42,8 @@ if (isset($_POST['login'])) {
 
             <!-- Teks Selamat datang di atas form -->
             <div class="text-gray-800 text-center -mt-24">
-               <h1 class="text-4xl font-bold">Selamat Datang Di Program Studi </h1>
-                <h2 class="text-3xl font-semibold">Sistem Informasi Batch 23 </h2>
+               <h1 class="text-4xl font-bold">Himpunan Mahasiswa Sistem Informasi </h1>
+                <h2 class="text-3xl font-semibold">ARTHADIPTA 2025 </h2>
             </div>
 
             <!-- Form Login dengan blur dan ukuran yang lebih kecil -->

@@ -63,7 +63,7 @@ $chart_data = [
                     class="bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg rounded p-6 flex items-center">
                     <div class="text-4xl mr-4">🎓</div>
                     <div>
-                        <h3 class="text-lg font-semibold mb-2">Total Siswa</h3>
+                        <h3 class="text-lg font-semibold mb-2">Total Mahasiswa</h3>
                         <p class="text-3xl font-bold"><?php echo $total_students; ?></p>
                     </div>
                 </div>
@@ -95,7 +95,7 @@ $chart_data = [
         data: {
             labels: <?php echo json_encode(array_keys($chart_data)); ?>,
             datasets: [{
-                label: 'Jumlah Siswa',
+                label: 'Jumlah Mahasiswa',
                 data: <?php echo json_encode(array_values($chart_data)); ?>,
                 borderColor: 'rgba(59, 130, 246, 1)',
                 backgroundColor: 'rgba(59, 130, 246, 0.2)',

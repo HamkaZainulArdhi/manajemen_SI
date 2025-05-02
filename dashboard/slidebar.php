@@ -68,7 +68,7 @@ header('Content-Type: text/html; charset=utf-8');
 
             <li>
                 <a href="mata-pelajaran.php" class="flex items-center py-2 px-4 rounded">
-                    <i class="fa-solid fa-book mr-2"></i>Mata Pelajaran
+                    <i class="fa-solid fa-book mr-2"></i>Mata Kuliah
                 </a>
             </li>
 
@@ -80,7 +80,7 @@ header('Content-Type: text/html; charset=utf-8');
             </li>
 
             <li>
-                <a href="absensi-guru.php" class="flex items-center py-2 px-4 rounded">
+                <a href="absensi-dosen.php" class="flex items-center py-2 px-4 rounded">
                     <i class="fa-solid fa-list mr-2"></i>Daftar Absensi
                 </a>
             </li>

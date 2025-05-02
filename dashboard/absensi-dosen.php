@@ -12,7 +12,7 @@ if (!isset($_SESSION['user'])) {
 if (isset($_GET['confirm_id'])) {
     $confirm_id = $_GET['confirm_id'];
     $conn->query("UPDATE absensi_guru SET status = 'Confirmed' WHERE id = $confirm_id");
-    header("Location: absensi-guru.php");
+    header("Location: absensi-dosen.php");
     exit();
 }
 
@@ -20,7 +20,7 @@ if (isset($_GET['confirm_id'])) {
 if (isset($_GET['delete_id'])) {
     $delete_id = $_GET['delete_id'];
     $conn->query("DELETE FROM absensi_guru WHERE id = $delete_id");
-    header("Location: absensi-guru.php");
+    header("Location: absensi-dosen.php");
     exit();
 }
 
@@ -111,7 +111,7 @@ $absensi_data = $conn->query("SELECT * FROM absensi_guru ORDER BY tanggal DESC, 
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman hapus
-                window.location.href = `absensi-guru.php?delete_id=${id}`;
+                window.location.href = `absensi-dosen.php?delete_id=${id}`;
             }
         });
     }
@@ -129,7 +129,7 @@ $absensi_data = $conn->query("SELECT * FROM absensi_guru ORDER BY tanggal DESC, 
         }).then((result) => {
             if (result.isConfirmed) {
                 // Redirect ke halaman konfirmasi
-                window.location.href = `absensi-guru.php?confirm_id=${id}`;
+                window.location.href = `absensi-dosen.php?confirm_id=${id}`;
             }
         });
     }
